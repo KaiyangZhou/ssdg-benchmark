@@ -4,7 +4,7 @@ This code is the official implementation of the following paper: [Semi-Supervise
 
 ## How to setup the environment
 
-This code is built on top of [Dassl.pytorch](https://github.com/KaiyangZhou/Dassl.pytorch). Please follow the instructions provided in https://github.com/KaiyangZhou/Dassl.pytorch to install the `dassl` environment, as well as to prepare the datasets, PACS and OfficeHome. The five random labeled-unlabeled splits can be downloaded at the following links: [pacs](https://drive.google.com/file/d/1PSliZDI9D-_Wrr3tfRzGVtN2cpM1892p/view?usp=sharing), [officehome](https://drive.google.com/file/d/1hASLWAfkf4qj-WXU5cx9uw9rQDsDvSyO/view?usp=sharing). The splits should be extracted to the two datasets' folders respectively. Assume you put the datasets under the directory `$DATA`, the structure should look like
+This code is built on top of [Dassl.pytorch](https://github.com/KaiyangZhou/Dassl.pytorch). Please follow the instructions provided in https://github.com/KaiyangZhou/Dassl.pytorch to install the `dassl` environment, as well as to prepare the datasets, PACS and OfficeHome. The five random labeled-unlabeled splits can be downloaded at the following links: [pacs](https://drive.google.com/file/d/1PSliZDI9D-_Wrr3tfRzGVtN2cpM1892p/view?usp=sharing), [officehome](https://drive.google.com/file/d/1hASLWAfkf4qj-WXU5cx9uw9rQDsDvSyO/view?usp=sharing). The splits need to be extracted to the two datasets' folders. Assume you put the datasets under the directory `$DATA`, the structure should look like
 ```
 $DATA/
     pacs/
@@ -23,7 +23,7 @@ The style augmentation is based on [AdaIN](https://arxiv.org/abs/1703.06868) and
 
 ## How to run StyleMatch
 
-The script is provided in `ssdg-benchmark/scripts/StyleMatch/run_ssdg.sh`. You need to update the `DATA` variable that points to the directory where you put the datasets. There are three input arguments: `DATASET`, `NLAB` (total number of labels), and `CFG`. See the tables below regarding how to set these variables.
+The script is provided in `ssdg-benchmark/scripts/StyleMatch/run_ssdg.sh`. You need to update the `DATA` variable that points to the directory where you put the datasets. There are three input arguments: `DATASET`, `NLAB` (total number of labels), and `CFG`. See the tables below regarding how to set the values for these variables.
 
 | `Dataset` | `NLAB` |
 |---|---|
