@@ -58,7 +58,7 @@ do
         --source-domains ${S1} ${S2} ${S3} \
         --target-domains ${T} \
         --dataset-config-file configs/datasets/${DATASET}.yaml \
-        --config-file configs/trainers/Ours/${DATASET}_${CFG}.yaml \
+        --config-file configs/trainers/${TRAINER}/${DATASET}_${CFG}.yaml \
         --output-dir output/${DATASET}/nlab_${NLAB}/${TRAINER}/${NET}/${CFG}/${T}/seed${SEED} \
         MODEL.BACKBONE.NAME ${NET} \
         DATASET.NUM_LABELED ${NLAB}
