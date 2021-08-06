@@ -7,6 +7,7 @@ DATALOADER:
   TEST:
     BATCH_SIZE: 100
   NUM_WORKERS: 4
+  RETURN_IMG0: True
 
 OPTIM:
   NAME: 'sgd'
