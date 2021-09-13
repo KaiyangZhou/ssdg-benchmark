@@ -7,16 +7,16 @@ This code is the official implementation of the following paper: [Semi-Supervise
 This code is built on top of [Dassl.pytorch](https://github.com/KaiyangZhou/Dassl.pytorch). Please follow the instructions provided in https://github.com/KaiyangZhou/Dassl.pytorch to install the `dassl` environment, as well as to prepare the datasets, PACS and OfficeHome. The five random labeled-unlabeled splits can be downloaded at the following links: [pacs](https://drive.google.com/file/d/1PSliZDI9D-_Wrr3tfRzGVtN2cpM1892p/view?usp=sharing), [officehome](https://drive.google.com/file/d/1hASLWAfkf4qj-WXU5cx9uw9rQDsDvSyO/view?usp=sharing). The splits need to be extracted to the two datasets' folders. Assume you put the datasets under the directory `$DATA`, the structure should look like
 ```
 $DATA/
-    pacs/
-        images/
-        splits/
-        splits_ssdg/
-    office_home_dg/
-        art/
-        clipart/
-        product/
-        real_world/
-        splits_ssdg/
+|–– pacs/
+|   |–– images/
+|   |–– splits/
+|   |__ splits_ssdg/
+|–– office_home_dg/
+|   |–– art/
+|   |–– clipart/
+|   |–– product/
+|   |–– real_world/
+|   |–– splits_ssdg/
 ```
 
 The style augmentation is based on [AdaIN](https://arxiv.org/abs/1703.06868) and the implementation is based on this code https://github.com/naoto0804/pytorch-AdaIN. Please download the weights of the decoder and the VGG from https://github.com/naoto0804/pytorch-AdaIN and put them under a new folder `ssdg-benchmark/weights`.
@@ -51,15 +51,15 @@ In this case, the code will run StyleMatch in four different setups (four target
 At the end of training, you will have
 ```
 output/
-    ssdg_pacs/
-        nlab_210/
-            StyleMatch/
-                resnet18/
-                    v1/ # contains results on four target domains
-                        art_painting/ # contains five folders: seed1-5
-                        cartoon/
-                        photo/
-                        sketch/
+|–– ssdg_pacs/
+|   |–– nlab_210/
+|   |   |–– StyleMatch/
+|   |   |   |–– resnet18/
+|   |   |   |   |–– v1/ # contains results on four target domains
+|   |   |   |   |   |–– art_painting/ # contains five folders: seed1-5
+|   |   |   |   |   |–– cartoon/
+|   |   |   |   |   |–– photo/
+|   |   |   |   |   |–– sketch/
 ```
 
 To show the results, simply do
