@@ -10,7 +10,7 @@ $DATA/
 |–– pacs/
 |   |–– images/
 |   |–– splits/
-|   |__ splits_ssdg/
+|   |–– splits_ssdg/
 |–– office_home_dg/
 |   |–– art/
 |   |–– clipart/
