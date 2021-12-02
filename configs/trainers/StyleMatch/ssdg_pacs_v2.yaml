@@ -1,6 +1,6 @@
 DATALOADER:
   TRAIN_X:
-    SAMPLER: 'SeqDomainSampler'
+    SAMPLER: "SeqDomainSampler"
     BATCH_SIZE: 48 # 16 images per domain
   TRAIN_U:
     SAME_AS_X: True
@@ -10,30 +10,30 @@ DATALOADER:
   RETURN_IMG0: True
 
 OPTIM:
-  NAME: 'sgd'
+  NAME: "sgd"
   LR: 0.003
   MAX_EPOCH: 40
-  LR_SCHEDULER: 'cosine'
+  LR_SCHEDULER: "cosine"
 
 TRAIN:
-  COUNT_ITER: 'train_u'
+  COUNT_ITER: "train_u"
   PRINT_FREQ: 10
 
 ##########
-# StyleMatch's variant
+# StyleMatch"s variant
 # stochastic classifier + T_style-only (no T_aug)
 ##########
 TRAINER:
   STYLEMATCH:
-    STRONG_TRANSFORMS: ['random_flip', 'randaugment_fixmatch', 'normalize', 'cutout']
+    STRONG_TRANSFORMS: ["random_flip", "randaugment_fixmatch", "normalize", "cutout"]
     C_OPTIM:
-      NAME: 'sgd'
+      NAME: "sgd"
       LR: 0.01
       MAX_EPOCH: 40
-      LR_SCHEDULER: 'cosine'
-    INFERENCE_MODE: 'deterministic'
-    ADAIN_DECODER: 'weights/decoder.pth'
-    ADAIN_VGG: 'weights/vgg_normalised.pth'
+      LR_SCHEDULER: "cosine"
+    INFERENCE_MODE: "deterministic"
+    ADAIN_DECODER: "weights/decoder.pth"
+    ADAIN_VGG: "weights/vgg_normalised.pth"
     APPLY_AUG: False
     APPLY_STY: True
-    CLASSIFIER: 'stochastic'
+    CLASSIFIER: "stochastic"

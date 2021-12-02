@@ -20,10 +20,10 @@ class UndoNorm:
         Input:
             tensor (torch.Tensor): tensor image of size (B, C, H, W)
         """
-        tensor = tensor.permute(1, 0, 2, 3) # to (C, B, H, W)
+        tensor = tensor.permute(1, 0, 2, 3)  # to (C, B, H, W)
         for t, m, s in zip(tensor, self.mean, self.std):
             t.mul_(s).add_(m)
-        tensor = tensor.permute(1, 0, 2, 3) # to (B, C, H, W)
+        tensor = tensor.permute(1, 0, 2, 3)  # to (B, C, H, W)
         return tensor
 
 
@@ -39,10 +39,10 @@ class Norm:
         Input:
             tensor (torch.Tensor): tensor image of size (B, C, H, W)
         """
-        tensor = tensor.permute(1, 0, 2, 3) # to (C, B, H, W)
+        tensor = tensor.permute(1, 0, 2, 3)  # to (C, B, H, W)
         for t, m, s in zip(tensor, self.mean, self.std):
             t.sub_(m).div_(s)
-        tensor = tensor.permute(1, 0, 2, 3) # to (B, C, H, W)
+        tensor = tensor.permute(1, 0, 2, 3)  # to (B, C, H, W)
         return tensor
 
 
@@ -50,7 +50,7 @@ class AdaIN:
     """Adaptive Instance Normalization.
 
     https://github.com/KaiyangZhou/ssdg-benchmark
-    
+
     https://arxiv.org/abs/2106.00592
 
     Reference:
@@ -67,7 +67,7 @@ class AdaIN:
         device,
         alpha=0.5,
         norm_mean=None,
-        norm_std=None
+        norm_std=None,
     ):
         """
         Args:
@@ -91,11 +91,11 @@ class AdaIN:
         if norm_mean is not None and norm_std is not None:
             self.undo_norm = UndoNorm(norm_mean, norm_std)
             self.norm = Norm(norm_mean, norm_std)
-        
+
         self.build_models(decoder_weights, vgg_weights)
 
     def build_models(self, decoder_weights, vgg_weights):
-        print('Building vgg and decoder for style transfer')
+        print("Building vgg and decoder for style transfer")
 
         self.decoder = decoder
         self.vgg = vgg
@@ -103,10 +103,10 @@ class AdaIN:
         self.decoder.eval()
         self.vgg.eval()
 
-        print(f'Loading decoder weights from {decoder_weights}')
+        print(f"Loading decoder weights from {decoder_weights}")
         self.decoder.load_state_dict(torch.load(decoder_weights))
 
-        print(f'Loading vgg weights from {vgg_weights}')
+        print(f"Loading vgg weights from {vgg_weights}")
         self.vgg.load_state_dict(torch.load(vgg_weights))
         self.vgg = nn.Sequential(*list(self.vgg.children())[:31])
 
