@@ -367,7 +367,7 @@ class StyleMatch(TrainerXU):
         return prediction
 
     def after_train(self):
-        print("Finished training")
+        print("Finish training")
 
         # Do testing
         if not self.cfg.TEST.NO_TEST:

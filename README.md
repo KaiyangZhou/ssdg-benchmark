@@ -4,6 +4,8 @@ This code is the official implementation of the following paper: [Semi-Supervise
 
 # Updates
 
+**25-08-2022**: In case you are using the latest version of `office_home_dg` in which the folder names do not contain labels, e.g., `000_Alarm_Clock` has been changed to `Alarm_Clock`, you can use `update_oh_path.py` to correct the image paths.
+
 **23-10-2021**: StyleMatch has been accepted to [NeurIPS 2021 Workshop on Distribution Shifts: Connecting Methods and Applications](https://sites.google.com/view/distshift2021).
 
 ## How to setup the environment

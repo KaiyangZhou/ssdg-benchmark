@@ -62,6 +62,7 @@ def compute_ci95(res):
 
 
 def parse_function(*metrics, directory="", args=None, end_signal=None):
+    print("===")
     print(f"Parsing files in {directory}")
     subdirs = listdir_nohidden(directory, sort=True)
 
@@ -97,12 +98,11 @@ def parse_function(*metrics, directory="", args=None, end_signal=None):
     assert len(outputs) > 0, f"Nothing found in {directory}"
 
     metrics_results = defaultdict(list)
-
     for output in outputs:
         msg = ""
         for key, value in output.items():
             if isinstance(value, float):
-                msg += f"{key}: {value:.2f}%. "
+                msg += f"{key}: {value:.1f}%. "
             else:
                 msg += f"{key}: {value}. "
             if key != "file":
@@ -110,13 +110,10 @@ def parse_function(*metrics, directory="", args=None, end_signal=None):
         print(msg)
 
     output_results = OrderedDict()
-
-    print("===")
-    print(f"Summary of directory: {directory}")
     for key, values in metrics_results.items():
         avg = np.mean(values)
         std = compute_ci95(values) if args.ci95 else np.std(values)
-        print(f"* {key}: {avg:.2f}% +- {std:.2f}%")
+        print(f"* average {key}: {avg:.1f}% +- {std:.1f}%")
         output_results[key] = avg
     print("===")
 
@@ -144,7 +141,7 @@ def main(args, end_signal):
         print("Average performance")
         for key, values in final_results.items():
             avg = np.mean(values)
-            print(f"* {key}: {avg:.2f}%")
+            print(f"* {key}: {avg:.1f}%")
 
     else:
         parse_function(
@@ -174,7 +171,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    end_signal = "Finished training"
+    end_signal = "Finish training"  # needs to be adapted to the latest
     if args.test_log:
         end_signal = "=> result"
 
